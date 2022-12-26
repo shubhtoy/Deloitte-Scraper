@@ -1,3 +1,10 @@
+# Project: Deloitte Scraper
+# Author: @shubhtoy
+# Purpose: To scrape jobs from Deloitte's career page
+# Python Version: 3.10.2
+
+
+# Importing required libraries
 import requests
 from bs4 import BeautifulSoup
 from lxml import etree
@@ -5,16 +12,15 @@ import math
 from threading import Thread
 import json
 
-# base_url = "https://jobsindia.deloitte.com/search/?q=&sortColumn=referencedate&sortDirection=desc"
-
+# Declaring global variables
 scroll_url = "https://jobsindia.deloitte.com/search/?q=&sortColumn=referencedate&sortDirection=desc&startrow={number}"
 base_url = "https://jobsindia.deloitte.com/"
 
-
+# Declaring file names
 INVALID_JOBS_FILE = "filled_positions"
 OUTFILE = "jobs"
 
-
+# Declaring functions
 def get_jobs(content, jobs_list):
     soup = BeautifulSoup(content, "html.parser")
 
@@ -106,6 +112,7 @@ def to_json(data: list):
     return new_dict
 
 
+# Main function
 def main():
 
     print("Starting Deloitte Scraper")
@@ -142,4 +149,5 @@ def main():
     return updates
 
 
-main()
+if __name__ == "__main__":
+    main()
